@@ -1,0 +1,61 @@
+<!-- 
+ router outlet is always placed in parent component 
+ if i go to home/products the products page would have product compnent but router outlet in home
+ similarly in home/products/reviews, products would have router outlet of reviews
+ -->
+
+<!-- loads the templates of URL we are reaching (e.g. products) in this place-->
+<router-outlet />
+
+<!-- 
+Deeper Level Example : initially we have <router-outlet />
+when we go to /lazyuser, we have  <router-outlet/> 
+                                  <app-lazyloaduser/>
+similar for furthur URLs the <router-outlets/> gets replaced, but stays as well
+-->
+
+
+
+
+<!-- http://localhost:4200/(secondary:secondaryroute) visit this, this is how 
+ we write multiple outlets, the first one is 'primary' by default so no need to write it -->
+<router-outlet name="secondary"></router-outlet>
+
+
+
+<!-- routerLinks, user "path name" enclosed in strings -->
+<!-- relative links, means wherever am I, add a "/lazyuser to it" -->
+<!-- relatives dont have / and all absolute have start with / -->
+<nav>
+  <li> <a routerLink="lazyuser"> Lazy User </a> </li>   
+</nav>
+
+<!-- absolute link, means start from "/lazyuser", its angular navigation and not browser navigation so new tab wont open-->
+<!-- start from app route "/" and go to "/lazyuser" -->
+<nav>
+  <li> <a routerLink="/lazyuser"> Lazy User </a> </li>   
+</nav>
+
+<!-- array based, title is dynamic and defined in components -->
+<nav>
+  <li> <a [routerLink]="['/lazyuser', title]"> Array based </a> <li>
+</nav>
+
+
+<!-- Route Navigation (olderway before routerLink), component based and not template-->
+<button (click)="routeNavigation()"> click me </button>
+<button (click)="routeNavigation2(100)"> click me for user </button>
+
+<!-- relative-to -->
+<button (click)="routeNavigation3()"> go back </button>
+
+<!-- url navigation -->
+<button (click)="routeNavigation4()"> click me! </button>
+
+
+
+
+<hr>
+<hr>
+
+<app-route-states/>
