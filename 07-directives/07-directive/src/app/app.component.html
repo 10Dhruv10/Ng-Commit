@@ -1,0 +1,20 @@
+<h1> Attribute Directive </h1>
+<p appHighlight> Hover over me </p>
+
+<br>
+<h1> Passing values to these directives</h1>
+<div>
+  <input type = "radio" (click)=" color = 'blue' " name="colors"/> blue
+  <input type = "radio" (click)=" color = 'cyan' " name="colors"/> cyan
+  <input type = "radio" (click)=" color = 'lightgreen' " name="colors"/> lightgreen
+  <input type = "radio" (click)=" color = '' " name="colors"/> none
+</div>
+
+<p appHighlight [colorFromApp]="color"> Please hover over me! <menu></menu> </p>
+<p appHighlight [colorFromApp]="color" defaultColor = "purple"> I have default color! </p>
+
+
+<br>
+<h1> ngNonBindable </h1>
+<p> Calculates: {{ 1+1 }} </p>
+<p ngNonBindable> Doesnt: {{ 1 + 1 }} </p>
