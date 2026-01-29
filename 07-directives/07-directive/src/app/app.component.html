@@ -18,3 +18,26 @@
 <h1> ngNonBindable </h1>
 <p> Calculates: {{ 1+1 }} </p>
 <p ngNonBindable> Doesnt: {{ 1 + 1 }} </p>
+
+
+
+
+<hr><hr><br>
+<h1> Structural directive </h1>
+
+<!-- modern 17+ approach, no directive used -->
+@if (title){
+  <p> {{ title }} </p>
+}
+<!-- older way, structural directive made by using * (asterick) with ngIf -->
+<p *ngIf="title"> {{ title }} </p>
+
+<!-- The above is shortcut for this, * is for shortcut -->
+<ng-template ngIf = "title">
+  <p> Hello there </p>
+</ng-template>
+
+
+<h1> custom structual directive </h1>
+<p *appStructural="true"> Render succesfull </p>
+<p *appStructural="false"> Render unsuccesfull </p>
