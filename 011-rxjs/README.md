@@ -32,5 +32,10 @@
 
 ---
 
-## Development server
+## How to Use  (Not sure, Taken from AI, as i'm slackin)
+
+Check the commented code sections in `src/app/app.component.ts`:
+- **Part 1** - Uncomment for observables with `interval()`
+- **Part 2** - Uncomment for signals with `effect()`
+- **Part 3** (active) - Shows `toObservable()` conversion
 
