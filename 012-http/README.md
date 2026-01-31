@@ -1,27 +1,65 @@
 # Http
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.0.
+## What I Learned
 
-## Development server
+HTTP communication (PlacePicker):
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **HttpClient** with GET/PUT/DELETE requests
+- **Typed responses** `<{ places: Place[] }>`
+- **Error handling** & loading states with signals
+- **Observable patterns** and subscription management
+- **Response observation** with `{ observe: 'response' }` for headers/status codes
+- **Express backend** with CORS setup
 
-## Code scaffolding
+## How to Use
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 1. Start the Backend Server
+```bash
+cd backend
+npm install
+node app.js
+# Server runs on http://localhost:3000
+```
 
-## Build
+### 2. Start the Angular App
+```bash
+# In the project root (012-http folder)
+npm install
+ng serve
+# Navigate to http://localhost:4200/
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 3. Key Files to Explore
 
-## Running unit tests
+- **`src/app/places/available-places/available-places.component.ts`**
+  - GET requests with typed responses
+  - Error handling with signals
+  - Loading states (`isFetching` signal)
+  - Subscription cleanup with `DestroyRef`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **`src/app/places/user-places/user-places.component.ts`**
+  - PUT requests to update user places
+  - DELETE requests to remove places
 
-## Running end-to-end tests
+- **`src/main.ts`**
+  - `provideHttpClient()` setup
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **`backend/app.js`**
+  - Express server with REST endpoints
+  - CORS configuration
+  - GET `/places` - fetch all places
+  - GET `/user-places` - fetch user's places
+  - PUT `/user-places` - add place to user's collection
+  - DELETE `/user-places/:id` - remove place from collection
 
-## Further help
+### What to Look For
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **Observable subscriptions** - how `.subscribe()` handles async HTTP responses
+- **Typed responses** - `HttpClient.get<{ places: Place[] }>()`
+- **Error handling** - `error: (error) => { ... }` in subscribe
+- **Loading states** - using signals to track request progress
+- **Memory management** - unsubscribing with `DestroyRef.onDestroy()`
+- **CORS setup** - `Access-Control-Allow-Origin` headers in backend
+
+---
+

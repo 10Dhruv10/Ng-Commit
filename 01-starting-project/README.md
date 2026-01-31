@@ -1,27 +1,61 @@
-# Essentials
+# 01-starting-project - Task Management App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+A task management application exploring Angular fundamentals with standalone components.
+
+## What I Learned
+
+### **app.component.ts** - Root Component
+- **Component composition** - importing `HeaderComponent`, `UserComponent`, `TasksComponent`
+- **State management** - `selectedUserId` for tracking active user
+- **Event handling** - `onSelectUser(id: string)` method
+- **Computed properties** - `get selectedUser()` to find user by ID
+- Data source - `DUMMY_USERS` array
+
+### **user/user.component.ts** - User Selection
+- **@Input()** - receiving `user` object and `selected` boolean from parent
+- **@Output()** - emitting `select` event with user ID to parent
+- **Computed property** - `get ImagePath()` for dynamic image paths
+- Event binding - `onSelectUser()` click handler
+
+### **tasks/tasks.service.ts** - State Management Service
+- **Dependency injection** - `@Injectable({providedIn: 'root'})`
+- **LocalStorage integration** - `saveTasks()` and constructor loading
+- **CRUD operations** - `addTask()`, `removeTask()`, `getUserTasks()`
+- **Data persistence** - `localStorage.setItem()` and `localStorage.getItem()`
+- **JSON serialization** - converting between objects and strings
+
+### **tasks/tasks.component.ts** - Task List Container
+- **Service injection** - `inject(TasksService)`
+- **@Input()** - receiving `userId` and `name` from parent
+- **Computed property** - `get selectedUserTasks()` filtering tasks by user
+- **Modal state** - `isAddingTask` boolean for showing/hiding new task form
+
+### **tasks/task/task.component.ts** - Individual Task Item
+- **@Input()** - receiving `task` object from parent
+- **@Output()** - emitting `complete` event with task ID
+- **Service injection** - calling `tasksService.removeTask()`
+- Event binding - `onCompleteTask()` click handler
+
+### **tasks/new-task/new-task.component.ts** - Task Creation Form
+- **FormsModule** - two-way binding with `[(ngModel)]`
+- **Template-driven form** - `enteredTitle`, `enteredSummary`, `enteredDate`
+- **@Input()** - receiving `userId` from parent
+- **@Output()** - emitting `close` event to parent
+- **Service injection** - calling `tasksService.addTask()`
+- Form handling - `onSubmit()` and `onCancel()` methods
+
+### **tasks/task/task.model.ts** - Type Definitions
+- **Interface** - `Task` with `id`, `userId`, `title`, `summary`, `dueDate`
+- **Type alias** - `NewTaskData` for task creation (without `id` and `userId`)
+
+### **shared/card/card.component.ts** - Reusable UI Component
+- **Content projection** - `<ng-content>` for flexible content
+- Standalone component for styling wrapper
+
+### **header/header.component.ts** - Static Header
+- Simple presentational component
+- No logic, just template display
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
