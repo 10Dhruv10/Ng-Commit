@@ -1,27 +1,40 @@
 # Essentials
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+This is the existing Angular CLI content.
+
+---
+
+## What I Learned - NgModule Architecture
+
+### **app.module.ts** - Root Module
+- **@NgModule decorator** - defining module metadata
+- **declarations** - registering `AppComponent`, `HeaderComponent`, `UserComponent`
+- **imports** - bringing in `BrowserModule`, `SharedModule`, `TasksModule`
+- **bootstrap** - specifying `AppComponent` as the root component
+- **Module-based bootstrapping** - using `platformBrowserDynamic().bootstrapModule(AppModule)`
+
+### **tasks/tasks.module.ts** - Feature Module
+- **Feature module creation** - organizing task-related components
+- **declarations** - `TaskComponent`, `TasksComponent`, `NewTaskComponent`
+- **imports** - `FormsModule`, `BrowserModule`, `SharedModule`
+- **exports** - making `TasksComponent` available to other modules
+- Understanding imports vs exports in modules
+
+### **shared/shared.module.ts** - Shared Module
+- **Shared module pattern** - reusable components across features
+- **CardComponent** declaration and export
+- Module reusability
+
+### **Converting from Standalone to Modules**
+- Changing `standalone: true` to `standalone: false`
+- Moving component imports to module declarations
+- Updating `main.ts` from `bootstrapApplication()` to `bootstrapModule()`
+
+### Key Concepts
+- **Lazy loading preparation** - main advantage of modules over standalone
+- **Module encapsulation** - organizing code by feature
+- **Dependency management** - controlling what's visible between modules
+
+---
 
 ## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
