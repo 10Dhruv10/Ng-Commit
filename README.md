@@ -88,10 +88,11 @@ A "PlacePicker" application demonstrating HTTP operations:
 - **Observable-based HTTP** with `.subscribe()`
 - **Loading states** with signals (`isFetching`)
 - **Error handling** for HTTP requests
-- **Backend integration** - Node.js/Express backend included
-- **CORS configuration** for cross-origin requests
 - **Response observation** with `{ observe: 'response' }` for headers/status
 - **DestroyRef** for cleaning up subscriptions
+
+- **Backend integration** - Node.js/Express backend included   (not implemented by me, taken from the course)
+- **CORS configuration** for cross-origin requests             (not implemented by me, taken from the course)
 
 ---
 
