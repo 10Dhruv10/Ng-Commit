@@ -1,0 +1,15 @@
+<app-header></app-header>
+
+<app-user-input
+
+    (submitSignal) = "afterSubmit($event)"
+
+></app-user-input>
+
+
+<h1 class="center">Practice Time!</h1>
+
+@if (submittedValue){
+    <app-investment-results>
+    </app-investment-results>
+}
